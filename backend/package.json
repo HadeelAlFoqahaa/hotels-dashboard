@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "pm2": "pm2 start processes.json --watch",
+    "pm2": "pm2 start processes.json --no-daemon",
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "test": "jest",
-    "migrate": "node ./bin/migrate.js"
+    "migrate": "node ./bin/migrate.js",
+    "generate-random": "node ./bin/randomdata.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

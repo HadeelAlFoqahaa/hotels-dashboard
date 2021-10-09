@@ -3,6 +3,23 @@ Simple Analytics dashboard for Hotels:
 
 How to run:
 
+## By docker 
+
+- Make sure you have docker-compose by write docker-compose -v
+```bash
+    docker-compose up
+```
+- When the command finished make sure that the apps are working, go to http://localhost:8080
+- please exec the backend container to run the migrate database file by 
+```bash
+    npm run migrate
+```
+- You can use this command to generate random reviews but to test all groups (weekly, monthly, daily)
+  you have to fill extra data
+```bash
+    npm run generate-random
+```
+
 ## Backend side:
 
   If you don't like to use docker, make sure that you have stable postgres server on your machine

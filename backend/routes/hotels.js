@@ -41,6 +41,49 @@ router.get("/all", function (req, res) {
         });
 });
 
+router.put("/", function (req, res) {
+    db.Hotel.create({
+        name: req.body.name,
+    })
+        .then( hotel => {
+            res.status(200).send(JSON.stringify(hotel));
+        })
+        .catch( err => {
+            res.status(500).send(JSON.stringify(err));
+        });
+});
+
+
+router.put("/reviews", function (req, res) {
+    db.Review.create({
+        comment: req.body.comment,
+        score: req.body.score,
+        HotelId: req.body.hotelId
+    })
+        .then( hotel => {
+            res.status(200).send(JSON.stringify(hotel));
+        })
+        .catch( err => {
+            res.status(500).send(JSON.stringify(err));
+        });
+});
+
+
+router.get("/reviews/all/:id", function (req, res) {
+    db.Review.findAll({
+        where: {
+            HotelId: req.params.id
+        }
+    })
+        .then(reviews => {
+            res.status(200).send(reviews);
+        })
+        .catch(err => {
+            res.status(500).send(err);
+        });
+});
+
+
 
 function manipulateReviews(reviews) {
 
