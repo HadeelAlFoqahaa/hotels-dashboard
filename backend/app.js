@@ -1,21 +1,27 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var hotelsRouter = require('./routes/hotels');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
+const hotelsRouter = require('./routes/hotels');
 
 
-var app = express();
+const app = express();
+
+app.use(cors({
+    origin: 'http://localhost:8080', // TODO Read from env file
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH', 'OPTIONS']
+}));
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+
+app.get('/', (req, res) => {
+    res.status(200).send('Server is working :)');
+});
+
 app.use('/hotels', hotelsRouter);
 
 
