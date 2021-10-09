@@ -7,6 +7,7 @@ How to run:
 
 - Make sure you have docker-compose by write docker-compose -v
 ```bash
+    cd hotels-dashboard/
     docker-compose up
 ```
 - When the command finished make sure that the apps are working, go to http://localhost:8080
